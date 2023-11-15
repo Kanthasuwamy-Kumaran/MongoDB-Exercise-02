@@ -198,10 +198,16 @@ customers> db.customerdetails.find()
 **8. Remove the customer from Tokyo.**
 
 **9.  Find customers not from Los Angeles.**
+
 **10.Find the customers who are older than age 25.**
+
 **11.Retrieve the males who are less than 25.**
+
 **12.Update Francis age to 35, if Francis is not available upsert.**
+
 **13.Retrieve males who are younger than 30 and older than25.**
+
 **14.Find a customer who is lesser than or equal to 23.**
+
 **15.Remove the customer from Tokyo.**
 
