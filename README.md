@@ -196,18 +196,185 @@ customers> db.customerdetails.find()
 ``
 
 **8. Remove the customer from Tokyo.**
+`` db.customerdetails.remove({city:"Tokyo"})
+
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }```
 
 **9.  Find customers not from Los Angeles.**
+``db.customerdetails.find({city:{$ne:"Los Angels"}})
+[
+  {
+    _id: ObjectId("65547511831f5bd5c913d723"),
+    name: 'John',
+    age: 25,
+    gender: 'Male',
+    city: 'SriLanka'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d724"),
+    name: 'Emily',
+    age: 22,
+    gender: 'Female',
+    city: 'London'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d725"),
+    name: 'Daniel',
+    age: 28,
+    gender: 'Male',
+    city: 'Sydney'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d726"),
+    name: 'Sophia',
+    age: 24,
+    gender: 'Female',
+    city: 'Paris'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d727"),
+    name: 'William',
+    age: 26,
+    gender: 'Male',
+    city: 'Chicago'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d728"),
+    name: 'Olivia',
+    age: 23,
+    gender: 'Female',
+    city: 'Los Angeles'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d729"),
+    name: 'Benjamin',
+    age: 27,
+    gender: 'Male',
+    city: 'Toronto'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d72a"),
+    name: 'Mila',
+    age: 29,
+    gender: 'Female',
+    city: 'Berlin'
+  },
+  {
+    _id: ObjectId("65547c21831f5bd5c913d72c"),
+    name: 'Raja',
+    age: 23,
+    gender: 'Male',
+    city: 'Jaffna'
+  }
+]``
 
 **10.Find the customers who are older than age 25.**
+``db.customerdetails.find({age:{$lt:25}})
+[
+  {
+    _id: ObjectId("65547511831f5bd5c913d724"),
+    name: 'Emily',
+    age: 22,
+    gender: 'Female',
+    city: 'London'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d726"),
+    name: 'Sophia',
+    age: 24,
+    gender: 'Female',
+    city: 'Paris'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d728"),
+    name: 'Olivia',
+    age: 23,
+    gender: 'Female',
+    city: 'Los Angeles'
+  },
+  {
+    _id: ObjectId("65547c21831f5bd5c913d72c"),
+    name: 'Raja',
+    age: 23,
+    gender: 'Male',
+    city: 'Jaffna'
+  }
+]``
 
 **11.Retrieve the males who are less than 25.**
+``db.customerdetails.find({gender:"Male",age:{$lt:25}})
+[
+  {
+    _id: ObjectId("65547c21831f5bd5c913d72c"),
+    name: 'Raja',
+    age: 23,
+    gender: 'Male',
+    city: 'Jaffna'
+  }
+]``
 
 **12.Update Francis age to 35, if Francis is not available upsert.**
+``db.customerdetails.update({name:"Francis"},{$set:{age:35}},{upsert:true})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65547e40e5eb27e9526949e3"),
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}``
 
 **13.Retrieve males who are younger than 30 and older than25.**
+``db.customerdetails.find({gender:"Male",age:{$gt:25,$lt:30}})
+[
+  {
+    _id: ObjectId("65547511831f5bd5c913d725"),
+    name: 'Daniel',
+    age: 28,
+    gender: 'Male',
+    city: 'Sydney'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d727"),
+    name: 'William',
+    age: 26,
+    gender: 'Male',
+    city: 'Chicago'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d729"),
+    name: 'Benjamin',
+    age: 27,
+    gender: 'Male',
+    city: 'Toronto'
+  }
+]``
 
 **14.Find a customer who is lesser than or equal to 23.**
+``db.customerdetails.find({age:{$lte:23}})
 
-**15.Remove the customer from Tokyo.**
+  {
+    _id: ObjectId("65547511831f5bd5c913d724"),
+    name: 'Emily',
+    age: 22,
+    gender: 'Female',
+    city: 'London'
+  },
+  {
+    _id: ObjectId("65547511831f5bd5c913d728"),
+    name: 'Olivia',
+    age: 23,
+    gender: 'Female',
+    city: 'Los Angeles'
+  },
+  {
+    _id: ObjectId("65547c21831f5bd5c913d72c"),
+    name: 'Raja',
+    age: 23,
+    gender: 'Male',
+    city: 'Jaffna'
+  }
+]
+
+
 
