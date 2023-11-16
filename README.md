@@ -196,10 +196,10 @@ customers> db.customerdetails.find()
 ``
 
 **8. Remove the customer from Tokyo.**
-`` db.customerdetails.remove({city:"Tokyo"})
+``db.customerdetails.remove({city:"Tokyo"})
 
 DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
-{ acknowledged: true, deletedCount: 1 }```
+{ acknowledged: true, deletedCount: 1 }``
 
 **9.  Find customers not from Los Angeles.**
 ``db.customerdetails.find({city:{$ne:"Los Angels"}})
@@ -374,7 +374,7 @@ DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany
     gender: 'Male',
     city: 'Jaffna'
   }
-]
+]``
 
 
 
